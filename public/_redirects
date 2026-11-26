@@ -1,0 +1,3 @@
+# Staff app (referrals.): single page app fallback. Every route that is not a file serves the app shell.
+# The public form build (vite.public.config.ts) replaces this file in its own output.
+/*  /index.html  200

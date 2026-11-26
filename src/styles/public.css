@@ -1,0 +1,49 @@
+/* Public referral form brand layer. Matches the Ethos website: Montserrat light lowercase headings,
+   Quicksand body and labels, sage accent, generous whitespace. Tokens come from tokens.css. */
+body {
+  font-family: var(--font-form);
+  font-size: 1.0625rem;
+  background: var(--color-surface);
+}
+
+.public-shell {
+  min-height: 100dvh;
+  color: var(--color-ink);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.public-header {
+  display: flex;
+  justify-content: center;
+  padding: 1.75rem 1rem 1rem;
+}
+
+.public-logo {
+  height: 2.25rem;
+  width: auto;
+}
+
+.public-main {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1rem 1.0rem 3rem;
+}
+
+.public-title {
+  font-family: var(--font-brand);
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-transform: lowercase;
+  color: var(--color-accent);
+  margin: 0 0 0.75rem;
+}
+
+.public-lede {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  max-width: 65ch;
+}

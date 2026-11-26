@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "createdAt": "2026-11-25T10:34:14.367Z",
+        "reason": "User confirmed the public form must match the Ethos website, which uses Montserrat light lowercase headings"
+      }
+    ]
+  }
+}

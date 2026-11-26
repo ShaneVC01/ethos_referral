@@ -1,0 +1,166 @@
+/*
+ * Ethos Referrals design tokens. Source of truth: DESIGN.md (section 2).
+ * Light is the default. Dark is designed separately (not inverted). It applies
+ * when the OS prefers dark, unless [data-theme="light"] is set, or when
+ * [data-theme="dark"] is set explicitly.
+ * Hex values are given in comments for designers and for the public site match.
+ */
+
+:root {
+  /* Surfaces */
+  --color-canvas: oklch(0.970 0.002 247.8);       /* #F4F5F6 app background */
+  --color-surface: oklch(1 0 0);                  /* #FFFFFF cards, tables, inputs */
+  --color-panel: oklch(0.951 0.003 228.8);        /* #EDEFF0 sidebar, rail, bottom nav */
+
+  /* Lines */
+  --color-line: oklch(0.902 0.005 247.9);         /* #DCDFE2 default hairline */
+  --color-line-subtle: oklch(0.930 0.003 247.9);  /* #E6E8EA row dividers */
+  --color-line-strong: oklch(0.666 0.010 242.9);  /* #8F959A logo grey, strong borders */
+
+  /* Text */
+  --color-ink: oklch(0.321 0.009 233.9);          /* #2F3437 primary text, 12.6:1 on white */
+  --color-ink-muted: oklch(0.491 0.013 235.0);    /* #5A6267 secondary text, 6.2:1 on white */
+  --color-ink-subtle: oklch(0.550 0.012 235.0);   /* #6B7378 placeholder and hints, 4.8:1 */
+  --color-ink-disabled: oklch(0.650 0.010 242.9); /* #8A9095 disabled text (exempt from contrast) */
+
+  /* Accent: sage, for primary actions, selection, focus and progress only */
+  --color-accent: #0F7A6A;  /* #0F7A6A primary teal, 5.2:1 with white text */
+  --color-accent-hover: #0C6658;  /* #0C6658 hover */
+  --color-accent-active: #0A5246;  /* #0A5246 pressed */
+  --color-accent-subtle: #DDF3EE;  /* #DDF3EE mint tint: selected row, active nav, active pill */
+  --color-accent-fg: #FFFFFF;  /* #FFFFFF text on accent */
+  --color-bar: #1F4A4A;  /* app top bar (dark teal) */
+  --color-amber: #B7791F;  /* current progress segment (3:1 non-text) */
+  --color-focus: #0F7A6A;  /* #0F7A6A focus ring */
+
+  /* Status palette (always paired with an icon and a label) */
+  --color-ok: #1E7F55;  /* #1E7F55 done, booked */
+  --color-ok-bg: #E3F4EC;  /* #E3F4EC booked tint */
+  --color-warn: #8A5A00;  /* #8A5A00 today, current step text, to call us icon */
+  --color-warn-fg: #7A5300;  /* #7A5300 warning text */
+  --color-warn-bg: #FFF1CC;  /* #FFF1CC today tint */
+  --color-danger: #B42318;  /* #B42318 overdue, failed, do not contact */
+  --color-danger-bg: #FDE8E6;  /* #FDE8E6 overdue tint */
+  --color-info: oklch(0.459 0.030 244.9);         /* #4A5A68 new (slate) */
+  --color-info-bg: oklch(0.943 0.008 241.7);      /* #E8EDF1 */
+  --color-neutral: oklch(0.491 0.013 235.0);      /* #5A6267 unsuccessful, declined (grey x) */
+  --color-neutral-bg: oklch(0.951 0.003 228.8);   /* #EDEFF0 */
+
+  /* Disabled */
+  --color-disabled-bg: oklch(0.951 0.003 228.8);  /* #EDEFF0 */
+
+  /* Shape and depth. Borders inside the app, shadow only for overlays */
+  --radius-control: 8px;
+  --radius-panel: 12px;
+  --radius-pill: 999px;
+  --shadow-overlay: 0 12px 32px -8px oklch(0.2 0.01 240 / 0.20), 0 2px 6px oklch(0.2 0.01 240 / 0.08);
+  --shadow-card: 0 1px 2px oklch(0.2 0.01 240 / 0.06), 0 1px 3px oklch(0.2 0.01 240 / 0.05);
+
+  /* Type: one family in the staff app. Fixed rem scale, ratio about 1.2 */
+  --font-sans: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-brand: "Montserrat", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-form: "Quicksand", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --text-xs: 0.75rem;     /* 12px, meta and column captions */
+  --text-sm: 0.8125rem;   /* 13px, compact table cells, helper text */
+  --text-base: 0.9375rem; /* 15px desktop body, 16px on phones (see media query) */
+  --text-lg: 1.125rem;    /* 18px section titles */
+  --text-xl: 1.35rem;     /* 21.6px page titles */
+  --text-2xl: 1.625rem;   /* 26px, dashboard headline numbers only */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+
+  /* Density */
+  --row-comfortable: 2.5rem; /* 40px */
+  --row-compact: 2rem;       /* 32px */
+  --target-min: 2.75rem;     /* 44px touch target on phones */
+
+  /* Layout */
+  --sidebar-width: 15rem;    /* 240px desktop */
+  --rail-width: 4.5rem;      /* 72px tablet */
+  --bottom-nav-height: 4rem; /* 64px phone */
+
+  /* Motion: state only, 150 to 200ms */
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas: oklch(0.211 0.006 236.9);      /* #16191B */
+    --color-surface: oklch(0.241 0.008 240.2);     /* #1C2023 */
+    --color-panel: oklch(0.269 0.009 234.1);       /* #22272A */
+    --color-line: oklch(0.370 0.012 232.7);        /* #3A4145 */
+    --color-line-subtle: oklch(0.308 0.011 225.5); /* #2A3134 */
+    --color-line-strong: oklch(0.529 0.014 231.9); /* #646D72 */
+    --color-ink: oklch(0.932 0.004 236.5);         /* #E6E9EB */
+    --color-ink-muted: oklch(0.771 0.011 234.9);   /* #AEB6BB */
+    --color-ink-subtle: oklch(0.707 0.012 234.9);  /* #9AA2A7 */
+    --color-ink-disabled: oklch(0.509 0.013 235.0);/* #5F676C */
+    --color-accent: #5CC2AE;  /* #5CC2AE primary teal on dark */
+    --color-accent-hover: #7AD0BE;  /* #7AD0BE  */
+    --color-accent-active: #9EDCCD;  /* #9EDCCD  */
+    --color-accent-subtle: #173B36;  /* #173B36 mint tint on dark */
+    --color-accent-fg: #0B1F1C;  /* #0B1F1C text on accent */
+    --color-bar: #123231;  /* app top bar on dark */
+    --color-amber: #E8B04A;  /*  */
+    --color-focus: #5CC2AE;  /* #5CC2AE  */
+    --color-ok: #6FC39A;  /* #6FC39A  */
+    --color-ok-bg: #1B3328;  /* #1B3328  */
+    --color-warn: #F2C15A;  /* #F2C15A  */
+    --color-warn-fg: #F2C15A;  /* #F2C15A  */
+    --color-warn-bg: #3A2E10;  /* #3A2E10  */
+    --color-danger: #FF8A7F;  /* #FF8A7F  */
+    --color-danger-bg: #3A1C1A;  /* #3A1C1A  */
+    --color-info: oklch(0.756 0.031 240.3);        /* #9FB3C2 */
+    --color-info-bg: oklch(0.302 0.027 242.4);     /* #22303B */
+    --color-neutral: oklch(0.771 0.011 234.9);
+    --color-neutral-bg: oklch(0.269 0.009 234.1);
+    --color-disabled-bg: oklch(0.269 0.009 234.1);
+    --shadow-overlay: 0 12px 32px -8px oklch(0 0 0 / 0.55), 0 2px 6px oklch(0 0 0 / 0.3);
+    --shadow-card: 0 1px 2px oklch(0 0 0 / 0.35);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-canvas: oklch(0.211 0.006 236.9);
+  --color-surface: oklch(0.241 0.008 240.2);
+  --color-panel: oklch(0.269 0.009 234.1);
+  --color-line: oklch(0.370 0.012 232.7);
+  --color-line-subtle: oklch(0.308 0.011 225.5);
+  --color-line-strong: oklch(0.529 0.014 231.9);
+  --color-ink: oklch(0.932 0.004 236.5);
+  --color-ink-muted: oklch(0.771 0.011 234.9);
+  --color-ink-subtle: oklch(0.707 0.012 234.9);
+  --color-ink-disabled: oklch(0.509 0.013 235.0);
+  --color-accent: #5CC2AE;  /* #5CC2AE primary teal on dark */
+  --color-accent-hover: #7AD0BE;  /* #7AD0BE  */
+  --color-accent-active: #9EDCCD;  /* #9EDCCD  */
+  --color-accent-subtle: #173B36;  /* #173B36 mint tint on dark */
+  --color-accent-fg: #0B1F1C;  /* #0B1F1C text on accent */
+  --color-bar: #123231;  /* app top bar on dark */
+  --color-amber: #E8B04A;  /*  */
+  --color-focus: #5CC2AE;  /* #5CC2AE  */
+  --color-ok: #6FC39A;  /* #6FC39A  */
+  --color-ok-bg: #1B3328;  /* #1B3328  */
+  --color-warn: #F2C15A;  /* #F2C15A  */
+  --color-warn-fg: #F2C15A;  /* #F2C15A  */
+  --color-warn-bg: #3A2E10;  /* #3A2E10  */
+  --color-danger: #FF8A7F;  /* #FF8A7F  */
+  --color-danger-bg: #3A1C1A;  /* #3A1C1A  */
+  --color-info: oklch(0.756 0.031 240.3);
+  --color-info-bg: oklch(0.302 0.027 242.4);
+  --color-neutral: oklch(0.771 0.011 234.9);
+  --color-neutral-bg: oklch(0.269 0.009 234.1);
+  --color-disabled-bg: oklch(0.269 0.009 234.1);
+  --shadow-overlay: 0 12px 32px -8px oklch(0 0 0 / 0.55), 0 2px 6px oklch(0 0 0 / 0.3);
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
+@media (max-width: 767px) {
+  :root { --text-base: 1rem; }  /* 16px body on phones */
+}
