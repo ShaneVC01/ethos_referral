@@ -1,16 +1,17 @@
-# Cloudflare Pages: staff app (referrals.).
-# Create the Pages project with this name, connect the repository, and set the build command to
-# `npm run build` with output directory `dist`. Put the custom domain behind Cloudflare Access.
+# Cloudflare Worker (static assets): staff app, production instance "ethos-referrals".
+# Built from the GitHub repository (Workers Builds): build command `npm run build`, deploy command
+# `npx wrangler deploy`. The seed (real patient data) is gitignored, so builds from GitHub contain
+# no patient records. Never deploy a local build that contains dist/seed until Cloudflare Access
+# protects the hostname.
 #
-# The public form (refer.) is a second Pages project built from the same repository with
-# `npm run build:public` and output directory `dist-public`. See docs/DEPLOY.md.
-#
-# Do not put secrets here. Environment variables are set in the Pages dashboard (build time, VITE_*).
+# Do not put secrets here. Build variables (VITE_DATA_ADAPTER, VITE_SUPABASE_URL,
+# VITE_SUPABASE_ANON_KEY, VITE_TURNSTILE_SITE_KEY) are set in the Worker's build settings and read
+# by Vite at build time.
 
 name = "ethos-referrals"
 compatibility_date = "2026-01-15"
-pages_build_output_dir = "dist"
 
-# Build variables (VITE_DATA_ADAPTER, VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_TURNSTILE_SITE_KEY)
-# are set per project in the Pages dashboard under Settings, Environment variables, Build. They are read
-# at build time by Vite, so they are not listed here.
+[assets]
+directory = "./dist"
+# Every route that is not a file serves the app shell (React Router handles it).
+not_found_handling = "single-page-application"

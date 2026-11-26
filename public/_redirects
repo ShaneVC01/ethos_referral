@@ -1,3 +1,4 @@
-# Staff app (referrals.): single page app fallback. Every route that is not a file serves the app shell.
+# Staff app (referrals.): no rules. The single page app fallback is handled by the Worker
+# (wrangler.toml: assets.not_found_handling = "single-page-application"). A "/* /index.html 200" rule
+# is rejected by Workers as an infinite loop.
 # The public form build (vite.public.config.ts) replaces this file in its own output.
-/*  /index.html  200
